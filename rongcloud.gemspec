@@ -6,7 +6,8 @@ require 'rongcloud/version'
 Gem::Specification.new do |spec|
   spec.name = "rongcloud"
   spec.version = Rongcloud::VERSION
-  spec.authors = ["saxer"]
+  spec.licenses = ['MIT']
+  spec.authors = ["mumaoxi"]
   spec.email = ["15201280641@qq.com"]
 
   spec.summary = %q{融云及时通讯}
