@@ -5,6 +5,7 @@ module Rongcloud
       attr_accessor :to_user_id
       attr_accessor :object_name #消息类型
 
+      #发送单聊消息
       def private_publish(rc_msg)
         post = {uri: Rongcloud::Service::API_URI[:MSG_PRV_PUBLISH],
                 params: optional_params({fromUserId: self.from_user_id, toUserId: self.to_user_id,
@@ -13,6 +14,14 @@ module Rongcloud
         }
         res = Rongcloud::Service.req_post(post)
         res[:code]==200
+      end
+
+      #消息历史记录
+      def history(date_str)
+        post = {uri: Rongcloud::Service::API_URI[:MSG_HISTORY],
+                params: optional_params({date: date_str})
+        }
+        Rongcloud::Service.req_post(post)
       end
     end
     # 不同类型的消息
