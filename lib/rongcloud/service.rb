@@ -3,6 +3,7 @@ module Rongcloud
 
     API_URI = {
         USER_GET_TOKEN: '/user/getToken.json',
+        USER_REFRESH: '/user/refresh.json',
         MSG_PRV_PUBLISH: '/message/private/publish.json',
         MSG_HISTORY: '/message/history.json'
     }

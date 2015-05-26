@@ -15,6 +15,15 @@ module Rongcloud
         self.token = res[:token]
         res[:token]
       end
+
+      #刷新用户信息
+      def refresh
+        post = {uri: Rongcloud::Service::API_URI[:USER_REFRESH],
+                params: optional_params({userId: self.user_id, name: self.name, portraitUri: self.portrait_uri})
+        }
+        res = Rongcloud::Service.req_post(post)
+        res[:code]==200
+      end
     end
   end
 end

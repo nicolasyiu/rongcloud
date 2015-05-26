@@ -15,6 +15,20 @@ describe Rongcloud::Service::User do
     expect(user.token).to match /.{10,256}/
   end
 
+
+  it 'update user info test' do
+    Rongcloud.app_key = '25wehl3uwrdbw'
+    Rongcloud.app_secret = 'MFdJudyld5G'
+
+    user = Rongcloud::Service::User.new
+
+    user.user_id = 2
+    user.name = '柳溪XXXX'
+    user.portrait_uri = 'http://tp1.sinaimg.cn/1611305952/180/5683416585/2'
+
+    expect(user.refresh).to eq(true)
+  end
+
   it 'pulish private message test' do
     Rongcloud.app_key = '25wehl3uwrdbw'
     Rongcloud.app_secret = 'MFdJudyld5G'
