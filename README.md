@@ -20,7 +20,7 @@ Or install it yourself as:
 
     $ gem install rongcloud
 
-## Configuration
+## 配置基本信息
 
 ```ruby
 Rongcloud.app_key = 'YOUR_APPKEY' #融云APPKEY
@@ -29,9 +29,6 @@ Rongcloud.app_secret = 'YOUR_SECRET' #融云APP_SECRET
 
 #### 获取用户TOKEN
 ```ruby
-	Rongcloud.app_key = 'YOUR_APPKEY'
-    Rongcloud.app_secret = 'YOUR_SECRET'
-
     user = Rongcloud::Service::User.new
 
     user.user_id = 2
@@ -44,9 +41,6 @@ Rongcloud.app_secret = 'YOUR_SECRET' #融云APP_SECRET
 
 #### 刷新用户基本信息
 ```ruby
-	Rongcloud.app_key = 'YOUR_APPKEY'
-    Rongcloud.app_secret = 'YOUR_SECRET'
-
     user = Rongcloud::Service::User.new
 
     user.user_id = 2
@@ -58,9 +52,6 @@ Rongcloud.app_secret = 'YOUR_SECRET' #融云APP_SECRET
 
 #### 发送单聊消息
 ```ruby
-	Rongcloud.app_key = 'YOUR_APPKEY'
-    Rongcloud.app_secret = 'YOUR_SECRET'
-
     model = Rongcloud::Service::Message.new
 
     model.from_user_id = 2
@@ -75,9 +66,6 @@ Rongcloud.app_secret = 'YOUR_SECRET' #融云APP_SECRET
 
 #### 获取聊天历史记录
 ```ruby
-	Rongcloud.app_key = 'YOUR_APPKEY'
-    Rongcloud.app_secret = 'YOUR_SECRET'
-
     model = Rongcloud::Service::Message.new
     sync_msg = ->(date_str) do
       ('00'..'23').to_a.each { |h|
@@ -86,12 +74,11 @@ Rongcloud.app_secret = 'YOUR_SECRET' #融云APP_SECRET
           system(" curl -o tmp/#{history[:date]}.zip #{history[:url]}")
           system(" unzip -o tmp/#{history[:date]}.zip -d tmp/")
         end
-        expect(history[:code]).to eq(200)
+        history[:code] # => true
       }
     end
     sync_msg.call(Time.now.strftime('%Y%m%d'))
     sync_msg.call(DateTime.parse((Time.now.to_time-24*60*60).to_s).strftime('%Y%m%d'))
-# => true
 ```
 
 ## Development
