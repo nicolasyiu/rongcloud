@@ -1,6 +1,11 @@
 require 'rongcloud'
+require 'yaml'
 
 describe Rongcloud::Service::User do
+  before(:all) do
+    CONFIG = YAML.load(File.open)
+  end
+
   it 'get user token test' do
     Rongcloud.app_key = 'YOUR_SECRET'
     Rongcloud.app_secret = 'YOUR_SECRET'
