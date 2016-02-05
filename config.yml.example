@@ -1,0 +1,4 @@
+rongcloud:
+  app_key: ''
+  app_secret: ''
+  api_host: 'https://api.cn.rong.io'

@@ -57,7 +57,7 @@ module Rongcloud
     end
 
     def self.default_request_config(config)
-      config[:host] ||= Rongcloud.api_host
+      config[:host] ||= Rongcloud.config.api_host
       config[:uri] ||= nil
       config[:params] ||= {}
       config[:headers] ||= Rongcloud::Sign.gen_headers
