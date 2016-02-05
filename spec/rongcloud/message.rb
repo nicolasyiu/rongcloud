@@ -1,8 +1,6 @@
-require 'rongcloud'
-require 'yaml'
-require 'active_support/core_ext/hash/keys'
+require 'spec_helper'
 
-describe Rongcloud::Service::User do
+describe Rongcloud::Service::Message do
   before(:all) do
     CONFIG = YAML.load(File.open(Rongcloud.root+ '/config.yml')).symbolize_keys
     @config = CONFIG[:rongcloud].symbolize_keys
@@ -13,40 +11,8 @@ describe Rongcloud::Service::User do
     end
   end
 
-  it 'get user token test' do
-    #Rongcloud.app_key = 'YOUR_SECRET'
-    #Rongcloud.app_secret = 'YOUR_SECRET'
-
-    user = Rongcloud::Service::User.new
-
-    user.user_id = 2
-    user.name = '柳溪'
-    user.portrait_uri = 'http://tp1.sinaimg.cn/1611305952/180/5683416585/1'
-    user.get_token
-
-    expect(user.token).to match /.{10,256}/
-  end
-
-
-  it 'update user info test' do
-    #Rongcloud.app_key = 'YOUR_SECRET'
-    #Rongcloud.app_secret = 'YOUR_SECRET'
-
-    user = Rongcloud::Service::User.new
-
-    user.user_id = 2
-    user.name = '柳溪XXXX'
-    user.portrait_uri = 'http://tp1.sinaimg.cn/1611305952/180/5683416585/2'
-
-    expect(user.refresh).to eq(true)
-  end
-
   it 'pulish private message test' do
-    #Rongcloud.app_key = 'YOUR_SECRET'
-    #Rongcloud.app_secret = 'YOUR_SECRET'
-
     model = Rongcloud::Service::Message.new
-
     model.from_user_id = 2
     model.to_user_id = 1
     model.object_name = 'RC:TxtMsg'
@@ -58,9 +24,6 @@ describe Rongcloud::Service::User do
   end
 
   it 'get message history test' do
-    #Rongcloud.app_key = 'YOUR_SECRET'
-    #Rongcloud.app_secret = 'YOUR_SECRET'
-
     model = Rongcloud::Service::Message.new
     sync_msg = ->(date_str) do
       ('00'..'23').to_a.each { |h|
@@ -75,6 +38,4 @@ describe Rongcloud::Service::User do
     sync_msg.call(Time.now.strftime('%Y%m%d'))
     sync_msg.call(DateTime.parse((Time.now.to_time-24*60*60).to_s).strftime('%Y%m%d'))
   end
-
-
 end

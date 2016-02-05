@@ -5,7 +5,17 @@ module Rongcloud
         USER_GET_TOKEN: '/user/getToken.json',
         USER_REFRESH: '/user/refresh.json',
         MSG_PRV_PUBLISH: '/message/private/publish.json',
-        MSG_HISTORY: '/message/history.json'
+        MSG_HISTORY: '/message/history.json',
+        GROUP_SYNC: '/group/sync',
+        GROUP_CREATE: '/group/create',
+        GROUP_JOIN: '/group/join',
+        GROUP_QUIT: '/group/quit',
+        GROUP_DISMISS: '/group/dismiss',
+        GROUP_REFRESH: '/group/refresh',
+        GROUP_QUERY: '/group/query',
+        GROUP_USER_GAG_ADD: '/group/user/gag/add',
+        GROUP_USER_GAG_ROLLBACK: '/group/user/gag/rollback',
+        GROUP_USER_GAG_LIST: '/group/user/gag/list'
     }
 
     def self.req_get(config)

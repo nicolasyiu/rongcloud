@@ -9,6 +9,7 @@ require 'rongcloud/sign'
 require 'rongcloud/service'
 require 'rongcloud/service/user'
 require 'rongcloud/service/message'
+require 'rongcloud/service/group'
 
 module Rongcloud
   class << self
