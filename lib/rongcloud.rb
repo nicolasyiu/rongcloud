@@ -4,6 +4,7 @@ require 'faraday'
 require 'json'
 require 'base64'
 require 'rongcloud/version'
+require 'rongcloud/configuration'
 require 'rongcloud/sign'
 require 'rongcloud/service'
 require 'rongcloud/service/user'
@@ -22,6 +23,18 @@ module Rongcloud
     #  end
     #  @api_host
     #end
+    #
+    def root
+      File.dirname __dir__
+    end
+
+    def lib
+      File.join root,"lib"
+    end
+
+    def spec
+      File.join root,"spec"
+    end
 
     attr_writer :debug_mode
 

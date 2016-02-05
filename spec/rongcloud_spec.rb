@@ -1,14 +1,21 @@
 require 'rongcloud'
 require 'yaml'
+require 'active_support/core_ext/hash/keys'
 
 describe Rongcloud::Service::User do
   before(:all) do
-    CONFIG = YAML.load(File.open)
+    CONFIG = YAML.load(File.open(Rongcloud.root+ '/config.yml')).symbolize_keys
+    @config = CONFIG[:rongcloud].symbolize_keys
+    Rongcloud.configure do |config|
+      config.app_key = @config[:app_key]
+      config.app_secret = @config[:app_secret]
+      config.api_host = @config[:api_host]
+    end
   end
 
   it 'get user token test' do
-    Rongcloud.app_key = 'YOUR_SECRET'
-    Rongcloud.app_secret = 'YOUR_SECRET'
+    #Rongcloud.app_key = 'YOUR_SECRET'
+    #Rongcloud.app_secret = 'YOUR_SECRET'
 
     user = Rongcloud::Service::User.new
 
@@ -22,8 +29,8 @@ describe Rongcloud::Service::User do
 
 
   it 'update user info test' do
-    Rongcloud.app_key = 'YOUR_SECRET'
-    Rongcloud.app_secret = 'YOUR_SECRET'
+    #Rongcloud.app_key = 'YOUR_SECRET'
+    #Rongcloud.app_secret = 'YOUR_SECRET'
 
     user = Rongcloud::Service::User.new
 
@@ -35,8 +42,8 @@ describe Rongcloud::Service::User do
   end
 
   it 'pulish private message test' do
-    Rongcloud.app_key = 'YOUR_SECRET'
-    Rongcloud.app_secret = 'YOUR_SECRET'
+    #Rongcloud.app_key = 'YOUR_SECRET'
+    #Rongcloud.app_secret = 'YOUR_SECRET'
 
     model = Rongcloud::Service::Message.new
 
@@ -51,8 +58,8 @@ describe Rongcloud::Service::User do
   end
 
   it 'get message history test' do
-    Rongcloud.app_key = 'YOUR_SECRET'
-    Rongcloud.app_secret = 'YOUR_SECRET'
+    #Rongcloud.app_key = 'YOUR_SECRET'
+    #Rongcloud.app_secret = 'YOUR_SECRET'
 
     model = Rongcloud::Service::Message.new
     sync_msg = ->(date_str) do
