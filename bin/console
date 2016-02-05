@@ -10,5 +10,6 @@ require "rongcloud"
 # require "pry"
 # Pry.start
 
+require 'yaml'
 require "irb"
 IRB.start

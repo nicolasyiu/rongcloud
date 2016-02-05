@@ -1,10 +1,11 @@
+require 'digest/sha1'
 module Rongcloud
   module Sign
 
     #生成header数据
     def self.gen_headers
-      app_key = Rongcloud.app_key
-      app_secret = Rongcloud.app_secret
+      app_key = Rongcloud.config.app_key
+      app_secret = Rongcloud.config.app_secret
       nonce = Rongcloud::Sign.random_str(32)
       time_stamp = Time.now.to_i
       signature = Digest::SHA1.hexdigest("#{app_secret}#{nonce}#{time_stamp}")
