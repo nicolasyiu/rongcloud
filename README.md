@@ -27,7 +27,7 @@ Rongcloud.app_key = 'YOUR_APPKEY' #融云APPKEY
 Rongcloud.app_secret = 'YOUR_SECRET' #融云APP_SECRET
 ```
 
-#### 获取用户TOKEN
+#### 获取用户TOKEN `/user/getToken`
 ```ruby
     user = Rongcloud::Service::User.new
 
@@ -39,7 +39,7 @@ Rongcloud.app_secret = 'YOUR_SECRET' #融云APP_SECRET
 # => adfasdfwere=23/wrewelwerwe==werw
 ```
 
-#### 刷新用户基本信息
+#### 刷新用户基本信息 `/user/refresh`
 ```ruby
     user = Rongcloud::Service::User.new
 
@@ -50,7 +50,7 @@ Rongcloud.app_secret = 'YOUR_SECRET' #融云APP_SECRET
 # => true
 ```
 
-#### 发送单聊消息
+#### 发送单聊消息 `/message/private/publish`
 ```ruby
     model = Rongcloud::Service::Message.new
 
@@ -64,7 +64,7 @@ Rongcloud.app_secret = 'YOUR_SECRET' #融云APP_SECRET
 # => true
 ```
 
-#### 获取聊天历史记录
+#### 获取聊天历史记录 `/message/history`
 ```ruby
     model = Rongcloud::Service::Message.new
     sync_msg = ->(date_str) do
