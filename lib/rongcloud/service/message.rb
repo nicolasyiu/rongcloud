@@ -16,6 +16,17 @@ module Rongcloud
         res[:code]==200
       end
 
+      #发送系统消息
+      def system_public(rc_msg)
+        post = {uri: Rongcloud::Service::API_URI[:MSG_SYSTEM_PUBLISH],
+                params: optional_params({fromUserId: self.from_user_id, toUserId: self.to_user_id,
+                                         objectName: self.object_name,
+                                         content: rc_msg.json_content})
+        }
+        res = Rongcloud::Service.req_post(post)
+        res[:code]==200
+      end
+
       #消息历史记录
       def history(date_str)
         post = {uri: Rongcloud::Service::API_URI[:MSG_HISTORY],
@@ -62,9 +73,10 @@ module Rongcloud
     class RCImgTextMsg< Rongcloud::Service::RCMsg
       attr_accessor :title
       attr_accessor :image_uri
+      attr_accessor :url
 
       def necessary_attrs
-        {title: self.title, content: self.content, imageUri: self.image_uri, extra: self.extra}
+        {title: self.title, content: self.content, imageUri: self.image_uri, url: self.url, extra: self.extra}
       end
     end
 

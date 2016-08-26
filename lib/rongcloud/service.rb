@@ -5,6 +5,7 @@ module Rongcloud
         USER_GET_TOKEN: '/user/getToken.json',
         USER_REFRESH: '/user/refresh.json',
         MSG_PRV_PUBLISH: '/message/private/publish.json',
+        MSG_SYSTEM_PUBLISH: '/message/system/publish.json',
         MSG_HISTORY: '/message/history.json'
     }
 
@@ -34,7 +35,7 @@ module Rongcloud
         config[:headers].each { |key, value| req.headers[key.to_s] = value.to_s }
         if post_format.to_s == 'urlencode'
           req.headers['Content-Type'] = 'application/x-www-form-urlencoded'
-          req.body = config[:params].collect { |key, value| "#{key}=#{value}" }.join('&')
+          req.body = config[:params].collect { |key, value| "#{key}=#{value.to_s.urlencode}" }.join('&')
         elsif post_format.to_s == 'json'
           req.headers['Content-Type'] = 'application/json'
           req.body = config[:params].to_json
