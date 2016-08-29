@@ -4,12 +4,16 @@ module Rongcloud
       attr_accessor :from_user_id
       attr_accessor :to_user_id
       attr_accessor :object_name #消息类型
+      attr_accessor :push_data
+      attr_accessor :push_content
 
       #发送单聊消息
       def private_publish(rc_msg)
         post = {uri: Rongcloud::Service::API_URI[:MSG_PRV_PUBLISH],
                 params: optional_params({fromUserId: self.from_user_id, toUserId: self.to_user_id,
                                          objectName: self.object_name,
+                                         pushData: self.push_data,
+                                         pushContent: self.push_content,
                                          content: rc_msg.json_content})
         }
         res = Rongcloud::Service.req_post(post)
@@ -21,6 +25,8 @@ module Rongcloud
         post = {uri: Rongcloud::Service::API_URI[:MSG_SYSTEM_PUBLISH],
                 params: optional_params({fromUserId: self.from_user_id, toUserId: self.to_user_id,
                                          objectName: self.object_name,
+                                         pushData: self.push_data,
+                                         pushContent: self.push_content,
                                          content: rc_msg.json_content})
         }
         res = Rongcloud::Service.req_post(post)

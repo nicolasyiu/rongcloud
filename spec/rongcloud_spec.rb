@@ -29,21 +29,21 @@ describe Rongcloud::Service::User do
   #   expect(user.refresh).to eq(true)
   # end
 
-  it 'pulish private message test' do
-    Rongcloud.app_key = 'm7ua80gbuufgm'
-    Rongcloud.app_secret = 'sEzCQ7F8SwREN'
-
-    model = Rongcloud::Service::Message.new
-    model.from_user_id = '10086'
-    model.to_user_id = '0fd11abae5ce150247bf95831ee2d939'
-    model.object_name = 'RC:TxtMsg'
-
-    txt_msg = Rongcloud::Service::RCTxtMsg.new
-    txt_msg.content = 'good job'
-    txt_msg.extra = 'hello extra'
-
-    expect(model.private_publish txt_msg).to eq(true)
-  end
+  # it 'pulish private message test' do
+  #   Rongcloud.app_key = 'm7ua80gbuufgm'
+  #   Rongcloud.app_secret = 'sEzCQ7F8SwREN'
+  #
+  #   model = Rongcloud::Service::Message.new
+  #   model.from_user_id = '10086'
+  #   model.to_user_id = '0fd11abae5ce150247bf95831ee2d939'
+  #   model.object_name = 'RC:TxtMsg'
+  #
+  #   txt_msg = Rongcloud::Service::RCTxtMsg.new
+  #   txt_msg.content = 'good job'
+  #   txt_msg.extra = 'hello extra'
+  #
+  #   expect(model.private_publish txt_msg).to eq(true)
+  # end
 
 
   it 'pulish system message test' do
@@ -55,6 +55,10 @@ describe Rongcloud::Service::User do
     model.from_user_id = '10086'
     model.to_user_id = '0fd11abae5ce150247bf95831ee2d939'
     model.object_name = 'CU:MoreImgTextMsg'
+    model.push_content = '测试'
+    model.push_data = '测试'
+
+    # model.object_name = 'RC:ImgTxtMsg'
 
     txt_msg = Rongcloud::Service::RCImgTextMsg.new
     txt_msg.title = '订单已签收,请留意!!!!'

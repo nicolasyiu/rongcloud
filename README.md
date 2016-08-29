@@ -69,6 +69,8 @@ Rongcloud.app_secret = 'YOUR_SECRET' #融云APP_SECRET
     model.from_user_id = '10086'
     model.to_user_id = '0fd11abae5ce150247bf95831ee2d939'
     model.object_name = 'CU:MoreImgTextMsg'
+    model.push_content = '测试'
+    model.push_data = '测试'
 
     txt_msg = Rongcloud::Service::RCImgTextMsg.new
     txt_msg.title = '订单已签收,请留意!!!!'
