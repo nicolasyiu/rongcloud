@@ -89,7 +89,7 @@ Rongcloud.app_secret = 'YOUR_SECRET' #融云APP_SECRET
                                 imageUri: 'http://mmbiz.qpic.cn/mmbiz_jpg/EEtCXiaicRt14LYqXlCLEK1xTvKFISNB1ToPw74J7Ra7qh9QsCnaBAp6I9U3Mso9eIYOPvBdtbUnmczhdhDm9snw/640?wx_fmt=jpeg&tp=webp&wxfrom=5&wx_lazy=1',
                                 url: 'http://mp.weixin.qq.com/s?__biz=MjM5MDU4Njg5Mw==&mid=2247484325&idx=5&sn=312bbaedacd17220bc5ca73c49890070&scene=0#rd'
                             }]}.to_json
-    model.system_publish txt_msg
+    model.system_public txt_msg
 # => true
 ```
 
