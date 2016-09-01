@@ -86,6 +86,17 @@ module Rongcloud
       end
     end
 
+    #自定义模板消息
+    class CUTemplateTextMsg < Rongcloud::Service::RCMsg
+      attr_accessor :title
+      attr_accessor :items
+      attr_accessor :url
+
+      def necessary_attrs
+        {title: self.title, content: self.content, items: self.items, url: self.url}
+      end
+    end
+
     class RCLBSMsg< Rongcloud::Service::RCMsg
       attr_accessor :latitude
       attr_accessor :longitude
