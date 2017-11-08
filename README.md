@@ -21,8 +21,12 @@ Or install it yourself as:
 ## 配置基本信息
 
 ```ruby
-Rongcloud.app_key = 'YOUR_APPKEY' #融云APPKEY
-Rongcloud.app_secret = 'YOUR_SECRET' #融云APP_SECRET
+# rails_app/config/initializers/rongcloud.rb
+Rongcloud.configure do |config|
+  config.app_key = ''
+  config.app_secret = ''
+  config.api_host = 'https://api.cn.rong.io'
+end
 ```
 
 #### 获取用户TOKEN `/user/getToken`
