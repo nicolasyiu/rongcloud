@@ -8,7 +8,7 @@ Gem::Specification.new do |spec|
   spec.version = Rongcloud::VERSION
   spec.licenses = ['MIT']
   spec.authors = ["mumaoxi"]
-  spec.email = ["15201280641@qq.com"]
+  spec.email = ["15200000000@qq.com"]
 
   spec.summary = %q{融云及时通讯}
   spec.description = %q{融云及时通讯}
